@@ -1,0 +1,5 @@
+require("yeyee-mbpro-m2.basic-settings")
+require("yeyee-mbpro-m2.plugins")
+require("yeyee-mbpro-m2.ide")
+require("yeyee-mbpro-m2.theme")
+require("yeyee-mbpro-m2.keymaps")
