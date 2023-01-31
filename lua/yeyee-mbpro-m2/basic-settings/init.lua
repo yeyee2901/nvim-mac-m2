@@ -90,3 +90,5 @@ endfunction
 
 set foldtext=MyFoldText()
 ]])
+
+require("yeyee-mbpro-m2.basic-settings.autocmd")
