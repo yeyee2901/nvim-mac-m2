@@ -1,5 +1,4 @@
-local telescope_ok, _ = pcall(require, "telescope")
-
+local telescope_ok, telescope = pcall(require, "telescope")
 if not telescope_ok then
 	return
 end
@@ -7,7 +6,7 @@ end
 local preview_size = 50 -- in percent
 local transparency = 0 -- in percent
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		vimgrep_arguments = {
 			"rg",
@@ -55,12 +54,12 @@ require("telescope").setup({
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 
-		extensions = {
-			project = {
-				hidden_files = true,
-			},
-		},
+		extensions = {},
 	},
 })
 
-require("telescope").load_extension("ultisnips")
+telescope.load_extension("ultisnips")
+
+if vim.fn.exepath("impl") then
+	telescope.load_extension("goimpl")
+end

@@ -12,6 +12,7 @@ require('nvim-treesitter.configs').setup {
         "tsx",
         "html",
         "css",
+		"json",
   },
 
   -- Install languages synchronously (only applied to `ensure_installed`)

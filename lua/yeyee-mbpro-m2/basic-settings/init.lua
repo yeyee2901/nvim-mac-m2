@@ -16,7 +16,7 @@ local opt = {
 	-- indentation settings
 	smartindent = true,
 	smarttab = true,
-	expandtab = true, -- tab turns into spaces
+	-- expandtab = true, -- tab turns into spaces
 	tabstop = 4,
 	softtabstop = 4,
 	shiftwidth = 4, -- Default
@@ -76,19 +76,5 @@ vim.cmd("syntax on")
 for option, value in pairs(opt) do
 	vim.opt[option] = value
 end
-
--- FOLDING
--- https://www.reddit.com/r/neovim/comments/opznf4/custom_foldtext_in_lua/
-vim.cmd([[
-function! MyFoldText()
-    let line = getline(v:foldstart)
-    let folded_line_num = v:foldend - v:foldstart
-    let line_text = substitute(line, '^"{\+', '', 'g')
-    let fillcharcount = &textwidth - len(line_text) - len(folded_line_num)
-    return '    ' . line_text . repeat('.', fillcharcount) . '  ' . folded_line_num . ' Lines'
-endfunction
-
-set foldtext=MyFoldText()
-]])
 
 require("yeyee-mbpro-m2.basic-settings.autocmd")

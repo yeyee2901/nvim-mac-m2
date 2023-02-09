@@ -13,13 +13,23 @@ VISUAL_MODE_MAPPING = {
 }
 
 INSERT_MODE_MAPPING = {
+	-- DELETING (do not copy to copy register, except when using 'd'-key action)
+	{ ["<C-w>"] = '<Esc>vb"_di' },
+
+	-- LSP helper in insert mode
 	{ ["<C-K>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
 }
 
 NORMAL_MODE_MAPPING = {
+	-- DELETING (do not copy to copy register, except when using 'd'-key action)
+	{ ["x"] = 'v"_d' },
+
 	-- SESSION
-	{ ["<Leader>so"] = "<cmd>source Session.vim<CR>" },
-	{ ["<Leader>ss"] = "<cmd>mksession!<CR>" },
+	{ ["<Leader>So"] = "<cmd>source Session.vim<CR>" },
+	{ ["<Leader>Ss"] = "<cmd>mksession!<CR>" },
+
+	-- ENABLE FOLDING (for some reason harus di manual)
+	{ ["<Leader>zf"] = ":set foldmethod=indent<CR>" },
 
 	-- WINDOW MOVEMENT KEYMAPS
 	{ ["<C-h>"] = "<C-w>h" },
@@ -101,7 +111,7 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>Ga"] = ":GoImport<CR>" },
 	{ ["<Leader>Gm"] = ":GoModTidy<CR>" },
 	{ ["<Leader>GT"] = ":GoTestSum<CR>" },
-	{ ["<Leader>GI"] = ":Telescope goimpl" },
+	{ ["<Leader>GI"] = ":Telescope goimpl<CR>" },
 
 	-- PLUGIN: nvim dap (debugger)
 --	{ ["<Leader>dr"] = '<cmd>lua require("dap").run()<CR>' },

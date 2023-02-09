@@ -79,4 +79,14 @@ require("packer").startup(function(use)
     -- FORMATTER
 	use({ "mhartington/formatter.nvim" })
 
+	-- GOIMPL
+	use {
+		'edolphin-ydf/goimpl.nvim',
+		requires = {
+			{'nvim-lua/plenary.nvim'},
+			{'nvim-lua/popup.nvim'},
+			{'nvim-telescope/telescope.nvim'},
+			{'nvim-treesitter/nvim-treesitter'},
+		},
+	}
 end)
