@@ -10,6 +10,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 VISUAL_MODE_MAPPING = {
+	-- DELETE TO VOID BUFFER
+	{ ["<Leader>d"] = '"_d' },
+
+	-- PASTE, but do not replace yank register
+	{ ["<Leader>p"] = '"_dP'},
 }
 
 INSERT_MODE_MAPPING = {
@@ -30,6 +35,12 @@ NORMAL_MODE_MAPPING = {
 
 	-- ENABLE FOLDING (for some reason harus di manual)
 	{ ["<Leader>zf"] = ":set foldmethod=indent<CR>" },
+
+	-- QUICKFIX LIST NAVIGATION
+	{ ["<Leader>cn"] = "<cmd>cnext<CR>" ,},
+	{ ["<Leader>cp"] = "<cmd>cprevious<CR>" ,},
+	{ ["<Leader>cq"] = "<cmd>cclose<CR>" ,},
+	{ ["<Leader>co"] = "<cmd>copen<CR>" ,},
 
 	-- WINDOW MOVEMENT KEYMAPS
 	{ ["<C-h>"] = "<C-w>h" },
@@ -75,9 +86,9 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>ts"] = "<cmd>Telescope live_grep<CR>" },
 	{ ["<Leader>tt"] = "<cmd>Telescope treesitter<CR>" },
 	{ ["<Leader>td"] = "<cmd>Telescope diagnostics<CR>" },
-	{ ["<Leader>tlds"] = "<cmd>Telescope lsp_document_symbols<CR>" },
-	{ ["<Leader>tla"] = "<cmd>Telescope lsp_range_code_actions<CR>" },
-	{ ["<Leader>tlgd"] = "<cmd>Telescope lsp_definitions<CR>" },
+	{ ["<Leader>tls"] = "<cmd>Telescope lsp_document_symbols<CR>" },
+	{ ["<Leader>tld"] = "<cmd>Telescope lsp_definitions<CR>" },
+	{ ["<Leader>tli"] = "<cmd>Telescope lsp_implementations<CR>" },
 	{ ["<Leader>tlr"] = "<cmd>Telescope lsp_references<CR>" },
 	{ ["<Leader>tgb"] = "<cmd>Telescope git_branches<CR>" },
 	{ ["<Leader>tgs"] = "<cmd>Telescope git_status<CR>" },
@@ -90,15 +101,17 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>ff"] = "<cmd>Format<CR>" },
 
 	-- PLUGIN: LSP
-	{ ["K"] = "<cmd>lua vim.lsp.buf.hover()<CR>" },
-	{ ["<Leader>K"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
-	{ ["gd"] = "<cmd>lua vim.lsp.buf.definition()<CR>" },
-	{ ["<Leader>j"] = "<cmd>lua vim.diagnostic.goto_next()<CR>" },
-	{ ["<Leader>k"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-	{ ["<Leader>r"] = "<cmd>lua vim.lsp.buf.rename()<CR>" },
+	{ ["K"] = "<cmd>Lspsaga hover_doc<CR>" },
+	{ ["gd"] = "<cmd>Lspsaga goto_definition<CR>" },
+	{ ["gt"] = "<cmd>Lspsaga peek_type_definition<CR>" },
+	{ ["<Leader>dj"] = "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+	{ ["<Leader>dk"] = "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
+	{ ["<Leader>db"] = "<cmd>Lspsaga show_buf_diagnostics<CR>" },
+	{ ["<Leader>dl"] = "<cmd>Lspsaga show_line_diagnostics<CR>" },
+	{ ["<Leader>r"] = "<cmd>Lspsaga rename<CR>" },
 
 	-- outline using LspSaga
-	{ ["<Leader>o"] = "<cmd>LSoutlineToggle<CR>" },
+	{ ["<Leader>o"] = "<cmd>Lspsaga outline<CR>" },
 
 	-- PLUGIN: LSP saga
 	{ ["<Leader>lp"] = "<cmd>Lspsaga peek_definition<CR>" },
@@ -112,18 +125,19 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>Gm"] = ":GoModTidy<CR>" },
 	{ ["<Leader>GT"] = ":GoTestSum<CR>" },
 	{ ["<Leader>GI"] = ":Telescope goimpl<CR>" },
+	{ ["<Leader>Gl"] = "<cmd>GoLint<CR>" },	-- requires golangci-lint (brew install)
 
 	-- PLUGIN: nvim dap (debugger)
---	{ ["<Leader>dr"] = '<cmd>lua require("dap").run()<CR>' },
---	{ ["<Leader>db"] = '<cmd>lua require("dap").toggle_breakpoint()<CR>' },
---	{ ["<Leader>d<CR>"] = '<cmd>lua require("dap").continue()<CR>' },
---	{ ["<Leader>dp"] = '<cmd>lua require("dap").pause()<CR>' },
---	{ ["<Leader>dj"] = '<cmd>lua require("dap").step_over()<CR>' },
---	{ ["<Leader>dJ"] = '<cmd>lua require("dap").step_into()<CR>' },
---	{ ["<Leader>de"] = '<cmd>lua require("dapui").eval()<CR>' },
---	{
---		["<Leader>dq"] = '<cmd>lua require("dap").disconnect({ restart = false, terminateDebuggee = true }, function() require("dap").close() end)<CR>',
---	},
+	--	{ ["<Leader>dr"] = '<cmd>lua require("dap").run()<CR>' },
+	--	{ ["<Leader>db"] = '<cmd>lua require("dap").toggle_breakpoint()<CR>' },
+	--	{ ["<Leader>d<CR>"] = '<cmd>lua require("dap").continue()<CR>' },
+	--	{ ["<Leader>dp"] = '<cmd>lua require("dap").pause()<CR>' },
+	--	{ ["<Leader>dj"] = '<cmd>lua require("dap").step_over()<CR>' },
+	--	{ ["<Leader>dJ"] = '<cmd>lua require("dap").step_into()<CR>' },
+	--	{ ["<Leader>de"] = '<cmd>lua require("dapui").eval()<CR>' },
+	--	{
+	--		["<Leader>dq"] = '<cmd>lua require("dap").disconnect({ restart = false, terminateDebuggee = true }, function() require("dap").close() end)<CR>',
+	--	},
 }
 
 ---------------------------------------------

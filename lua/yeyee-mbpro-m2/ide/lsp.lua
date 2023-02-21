@@ -66,11 +66,16 @@ saga.setup({
 	},
 	symbol_in_winbar = {
 		enable = true,
-		in_custom = false, -- whether to use custom handler or not
-		click_support = false, -- screw mouse
 		separator = " ",
+		ignore_patterns={},
+		hide_keyword = false,
 		show_file = true,
+		-- folder_level = 2,
+		respect_root = true,
+		color_mode = true,
+		in_custom = false,
 		file_formatter = "%:t",
+		click_support = false,
 	},
 })
 

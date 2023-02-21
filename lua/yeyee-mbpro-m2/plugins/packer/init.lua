@@ -16,6 +16,7 @@ require("packer").startup(function(use)
 
     -- UI stuffs
 	use({ "EdenEast/nightfox.nvim" })
+	use({ "uloco/bluloco.nvim", requires = { 'rktjmp/lush.nvim' } })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "romgrk/barbar.nvim" })
@@ -68,6 +69,7 @@ require("packer").startup(function(use)
 
     -- GIT
     use({ "lewis6991/gitsigns.nvim" })
+    use({ "tpope/vim-fugitive" })
 
     -- WINDOW TINT
     use ({ "levouh/tint.nvim" })

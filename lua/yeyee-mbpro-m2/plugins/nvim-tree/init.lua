@@ -38,7 +38,9 @@ require("nvim-tree").setup({
 	},
 
 	view = {
-		relativenumber = true,
+		relativenumber = false,
+		number = false,
+		signcolumn = "yes",
 		float = {
 			enable = true,
 			open_win_config = function()
@@ -65,6 +67,8 @@ require("nvim-tree").setup({
 			return math.floor(vim.opt.columns:get() * NVIM_TREE_WIDTH_RATIO)
 		end,
 	},
+
+	-- if you want sidebar
 	-- view = {
 		-- 	width = 30,
 		-- 	hide_root_folder = true,
