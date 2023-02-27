@@ -19,7 +19,7 @@ VISUAL_MODE_MAPPING = {
 
 INSERT_MODE_MAPPING = {
 	-- DELETING (do not copy to copy register, except when using 'd'-key action)
-	{ ["<C-w>"] = '<Esc>vb"_di' },
+	{ ["<C-w>"] = '<Esc>vb"_da' },
 
 	-- LSP helper in insert mode
 	{ ["<C-K>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
@@ -102,7 +102,7 @@ NORMAL_MODE_MAPPING = {
 
 	-- PLUGIN: LSP
 	{ ["K"] = "<cmd>Lspsaga hover_doc<CR>" },
-	{ ["gd"] = "<cmd>Lspsaga goto_definition<CR>" },
+	{ ["gd"] = "<cmd>lua vim.lsp.buf.definition()<CR>" },
 	{ ["gt"] = "<cmd>Lspsaga peek_type_definition<CR>" },
 	{ ["<Leader>dj"] = "<cmd>Lspsaga diagnostic_jump_next<CR>" },
 	{ ["<Leader>dk"] = "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
@@ -119,13 +119,17 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>lr"] = "<cmd>Lspsaga lsp_finder<CR>" },
 
 	-- PLUGIN: Various golang related tools
-	{ ["<Leader>Gt"] = ":GoAddTag<CR>" },
-	{ ["<Leader>Gi"] = ":GoImport<CR>" },
-	{ ["<Leader>Ga"] = ":GoImport<CR>" },
-	{ ["<Leader>Gm"] = ":GoModTidy<CR>" },
-	{ ["<Leader>GT"] = ":GoTestSum<CR>" },
-	{ ["<Leader>GI"] = ":Telescope goimpl<CR>" },
+	{ ["<Leader>Gt"] = "<cmd>GoAddTag<CR>" },
+	{ ["<Leader>Gi"] = "<cmd>GoImport<CR>" },
+	{ ["<Leader>Ga"] = "<cmd>GoImport<CR>" },
+	{ ["<Leader>Gm"] = "<cmd>GoModTidy<CR>" },
+	{ ["<Leader>GTf"] = "<cmd>GoTestFile -- -count=1<CR>" },
+	{ ["<Leader>GI"] = "<cmd>Telescope goimpl<CR>" },
 	{ ["<Leader>Gl"] = "<cmd>GoLint<CR>" },	-- requires golangci-lint (brew install)
+
+	-- PLUGIN: go test
+	{ ["<Leader>Tf"] = "<cmd>TestFile<CR>"},
+	{ ["<Leader>TT"] = "<cmd>TestNearest<CR>"},
 
 	-- PLUGIN: nvim dap (debugger)
 	--	{ ["<Leader>dr"] = '<cmd>lua require("dap").run()<CR>' },

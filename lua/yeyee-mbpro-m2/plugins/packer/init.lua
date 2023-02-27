@@ -91,4 +91,7 @@ require("packer").startup(function(use)
 			{'nvim-treesitter/nvim-treesitter'},
 		},
 	}
+
+	-- TEST DRIVEN DEVELOPMENT
+	use { 'vim-test/vim-test' }
 end)

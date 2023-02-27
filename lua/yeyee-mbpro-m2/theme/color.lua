@@ -6,7 +6,7 @@ end
 bluloco.setup({
 	-- "auto" | "dark" | "light"
 	style = "dark",
-	transparent = true,
+	transparent = false,
 	italics = true,
 
 	-- bluoco colors are enabled in gui terminals per default.
