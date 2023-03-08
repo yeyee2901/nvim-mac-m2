@@ -1,8 +1,8 @@
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then
+if not pcall(require, "telescope") then
 	return
 end
 
+local telescope = require("telescope")
 local preview_size = 50 -- in percent
 local transparency = 0 -- in percent
 

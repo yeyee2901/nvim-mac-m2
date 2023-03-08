@@ -1,3 +1,7 @@
+if not pcall(require, "cmp") then
+	return
+end
+
 -- SECTION: Ultisnips Snippet engine
 -- Calling ExpandTrigger,
 -- will make nvim-cmp completion behave

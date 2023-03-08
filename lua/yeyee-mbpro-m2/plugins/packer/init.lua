@@ -19,7 +19,6 @@ require("packer").startup(function(use)
 	use({ "uloco/bluloco.nvim", requires = { 'rktjmp/lush.nvim' } })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "kyazdani42/nvim-web-devicons" })
-	use({ "romgrk/barbar.nvim" })
     use({
         "glepnir/dashboard-nvim",
         requires = { "nvim-tree/nvim-web-devicons" },
@@ -91,6 +90,9 @@ require("packer").startup(function(use)
 			{'nvim-treesitter/nvim-treesitter'},
 		},
 	}
+
+	-- RUST TOOLS
+	use { 'simrat39/rust-tools.nvim' }
 
 	-- TEST DRIVEN DEVELOPMENT
 	use { 'vim-test/vim-test' }

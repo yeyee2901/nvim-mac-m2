@@ -121,16 +121,26 @@ lspconfig.gopls.setup({
 })
 
 -- rustup component add rust-analyzer
--- local rust_tools = require("user.plugins.rust-tools")
--- rust_tools.init(
---     rust_tools.init_opts(capabilities_updated, custom_on_attach)
--- )
+-- rustup component add clippy
+local rt = require("rust-tools")
+rt.setup({
+	server = {
+		cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' } ,
+		on_attach = custom_on_attach,
+		capabilities = capabilities,
+	},
 
--- lspconfig.rust_analyzer.setup({
---     cmd = { "rustup", "run", "stable", "rust-analyzer" },
--- 	capabilities = capabilities_updated,
--- 	on_attach = custom_on_attach,
--- })
+	tools = {
+		-- termopen / quickfix
+		executor = require("rust-tools.executors").termopen,
+		inlay_hints = {
+			auto = true,
+			only_current_line = true,
+			show_parameter_hints = false,
+			highlight = "Comment",
+		},
+	},
+})
 
 -- npm i -g pyright
 lspconfig.pyright.setup({

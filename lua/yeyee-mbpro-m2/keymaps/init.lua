@@ -128,8 +128,10 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>Gl"] = "<cmd>GoLint<CR>" },	-- requires golangci-lint (brew install)
 
 	-- PLUGIN: go test
-	{ ["<Leader>Tf"] = "<cmd>TestFile<CR>"},
+	{ ["<Leader>TF"] = "<cmd>TestFile<CR>"},
 	{ ["<Leader>TT"] = "<cmd>TestNearest<CR>"},
+	{ ["<Leader>TL"] = "<cmd>TestLast<CR>"},
+	{ ["<Leader>TV"] = "<cmd>TestVisit<CR>"},
 
 	-- PLUGIN: nvim dap (debugger)
 	--	{ ["<Leader>dr"] = '<cmd>lua require("dap").run()<CR>' },

@@ -4,7 +4,10 @@ require("go").setup({
 	max_line_len = 90,
 	tag_transform = "snakecase",
 	test_dir = "",
-	test_runner = "gotestsum",
+
+	-- go install github.com/kyoh86/richgo@latest
+	test_runner = "richgo",
+
 	comment_placeholder = "   ",
 	lsp_cfg = false, -- false: use your own lspconfig
 	lsp_on_attach = false, -- use on_attach from go.nvim
