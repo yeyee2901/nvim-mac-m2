@@ -20,13 +20,38 @@ for opt, val in pairs(options) do
 end
 
 -- SECTION: Nvim-Cmp Autocomplete engine
+vim.o.completeopt = "menuone,noselect"
 local cmp = require("cmp")
 
-vim.o.completeopt = "menuone,noselect"
-
 cmp.setup({
-	completion = {
-		completeopt = vim.o.completeopt,
+	snippet = {
+		expand = function(args)
+			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+		end,
+	},
+
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
+		{ name = 'ultisnips' }, -- For ultisnips users.
+		{ name = "nvim_lua" },
+		{ name = 'path' },
+	}),
+
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. (strings[1] or "") .. " "
+			kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+			return kind
+		end,
 	},
 
 	mapping = {
@@ -40,42 +65,5 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		}),
-	},
-
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-
-	-- how the completion items are dis
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- short format
-			-- vim_item.kind = require('lspkind').presets.default[vim_item.kind] or ''
-
-			-- long format
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. strings[1] .. " "
-			kind.menu = "    (" .. strings[2] .. ")"
-			return vim_item
-		end,
-	},
-
-	sources = {
-		-- { name = 'buffer' },
-		{ name = "nvim_lsp" },
-		{ name = "ultisnips" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
-	},
-
-	-- INSTALL:
-	-- quangnguyen30192/cmp-nvim-ultisnips
-	snippet = {
-		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body)
-		end,
 	},
 })

@@ -64,6 +64,8 @@ local opt = {
 
 	-- %f = show filename by default, requires neovim 0.8.0
 	winbar = "%f",
+
+	showtabline = 0,
 }
 
 -- Allow Lua syntax in vimscripts ('l' = lua)
