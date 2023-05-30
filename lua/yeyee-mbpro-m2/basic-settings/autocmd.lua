@@ -34,3 +34,12 @@ autocmd("FileType", {
     vim.opt_local.buflisted = false
   end,
 })
+
+autocmd("FileType", {
+	pattern = { "jsx", "typescript", "typescriptreact", "javascript", "javascriptreact", "html", "css" },
+	callback = function ()
+		vim.cmd[[ setlocal tabstop=2 ]]
+		vim.cmd[[ setlocal softtabstop=2 ]]
+		vim.cmd[[ setlocal shiftwidth=2 ]]
+	end
+})

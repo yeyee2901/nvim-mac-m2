@@ -37,6 +37,14 @@ require("packer").startup(function(use)
 	use({ "glepnir/lspsaga.nvim" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "ray-x/lsp_signature.nvim" })
+	use({ "jose-elias-alvarez/typescript.nvim" })
+
+	-- LSP helper
+	use({ "williamboman/mason.nvim", })
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		requires = { "neovim/nvim-lspconfig" },
+	})
 
     -- file explorer
     use({
@@ -96,4 +104,7 @@ require("packer").startup(function(use)
 
 	-- TEST DRIVEN DEVELOPMENT
 	use { 'vim-test/vim-test' }
+
+	-- FOR CSS COLORS
+	use ({ "norcalli/nvim-colorizer.lua" })
 end)

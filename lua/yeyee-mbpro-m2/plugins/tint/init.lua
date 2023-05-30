@@ -1,6 +1,6 @@
 require("tint").setup({
-  tint = -45, 
-  saturation = 0.6,
+  tint = -38, 
+  saturation = 0.7,
   transforms = require("tint").transforms.SATURATE_TINT,
   tint_background_colors = false,
   highlight_ignore_patterns = { "WinSeparator", "Status.*" },

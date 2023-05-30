@@ -1,6 +1,9 @@
 -- SECTION: GLOBAL VARS
 MY_HOME = os.getenv("HOME")
 
+-- SECTION: setup Mason
+require("yeyee-mbpro-m2.ide.mason")
+
 -- SECTION: SERVER SETTINGS
 vim.fn.sign_define(
 	"DiagnosticSignError",
@@ -144,89 +147,9 @@ rt.setup({
 
 -- npm i -g pyright
 lspconfig.pyright.setup({
-	capabilities = capabilities,
-	on_attach = custom_on_attach,
-})
-
--- npm i -g intelephense
-lspconfig.intelephense.setup({
 	capabilities = capabilities_updated,
 	on_attach = custom_on_attach,
 })
 
--- npm i -g typescript typescript-language-server
--- npm i -g vscode-langservers-extracted
-lspconfig.tsserver.setup({
-	capabilities = capabilities_updated,
-	on_attach = custom_on_attach,
-})
-
--- npm i -g @astrojs/language-server
-lspconfig.astro.setup({
-	capabilities = capabilities_updated,
-	on_attach = custom_on_attach,
-})
-
--- npm i -g eslint
-lspconfig.eslint.setup({
-	filetypes = {
-		"javascript",
-		"javascriptreact",
-		"javascript.jsx",
-		"typescript",
-		"typescriptreact",
-		"typescript.tsx",
-		"astro",
-	},
-	settings = {
-		codeAction = {
-			disableRuleComment = {
-				enable = true,
-				location = "separateLine",
-			},
-			showDocumentation = {
-				enable = true,
-			},
-		},
-		codeActionOnSave = {
-			enable = false,
-			mode = "all",
-		},
-		format = true,
-		nodePath = "",
-		onIgnoredFiles = "off",
-		packageManager = "npm",
-		quiet = false,
-		rulesCustomizations = {},
-		run = "onType",
-		useESLintClass = false,
-		validate = "on",
-		workingDirectory = {
-			mode = "auto",
-		},
-	},
-})
-
--- lua language server
--- lspconfig.sumneko_lua.setup({
---   settings = {
---     Lua = {
---       runtime = {
---         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---         version = 'LuaJIT',
---       },
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = {'vim'},
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = vim.api.nvim_get_runtime_file("", true),
---       },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- })
+-- FRONT END STUFFS
+require("yeyee-mbpro-m2.ide.frontend").init_frontend(custom_on_attach, capabilities_updated)

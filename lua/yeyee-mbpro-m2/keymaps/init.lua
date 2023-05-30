@@ -19,13 +19,18 @@ VISUAL_MODE_MAPPING = {
 
 INSERT_MODE_MAPPING = {
 	-- DELETING (do not copy to copy register, except when using 'd'-key action)
-	{ ["<C-w>"] = '<Esc>vb"_da' },
+	{ ["<C-w>"] = '<Esc>vb"_di' },
 
 	-- LSP helper in insert mode
 	{ ["<C-K>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
 }
 
 NORMAL_MODE_MAPPING = {
+	-- KINDA WEIRD, but i'm tired of "not an editor command: W"  :)
+	{ ["[["] = ":w<CR>" },
+	{ ["]]"] = ":bd<CR>" },
+	{ ["[]"] = ":q<CR>" },
+
 	-- DELETING (do not copy to copy register, except when using 'd'-key action)
 	{ ["x"] = 'v"_d' },
 
@@ -101,7 +106,7 @@ NORMAL_MODE_MAPPING = {
 	{ ["<Leader>ff"] = "<cmd>Format<CR>" },
 
 	-- PLUGIN: LSP
-	{ ["K"] = "<cmd>Lspsaga hover_doc<CR>" },
+	{ ["K"] = "<cmd>lua vim.lsp.buf.hover()<CR>" },
 	{ ["gd"] = "<cmd>lua vim.lsp.buf.definition()<CR>" },
 	{ ["gt"] = "<cmd>Lspsaga peek_type_definition<CR>" },
 	{ ["<Leader>dj"] = "<cmd>Lspsaga diagnostic_jump_next<CR>" },

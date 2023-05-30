@@ -24,7 +24,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = {
       'help',
-      'lua',
+      -- 'lua',
     },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
