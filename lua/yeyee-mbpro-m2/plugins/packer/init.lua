@@ -107,4 +107,14 @@ require("packer").startup(function(use)
 
 	-- FOR CSS COLORS
 	use ({ "norcalli/nvim-colorizer.lua" })
+
+	-- CHAT LGBT
+	use ({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	})
 end)
