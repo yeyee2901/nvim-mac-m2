@@ -5,19 +5,22 @@ M.init_frontend = function(on_attach, capabilities)
 	local typescript = require("typescript")
 
 	-- TYPESCRIPT LANGUAGE SERVER
+	local tsserver_helper = require("yeyee-mbpro-m2.ide.frontend.tsserver")
 	typescript.setup({
 		disable_commands = true,
 		debug = false,
 		server = {
-			capabilities = capabilities,
+			capabilities = tsserver_helper.get_capabilities(),
 			on_attach = on_attach,
+			handlers = tsserver_helper.get_handlers(),
+			settings = tsserver_helper.get_settings(),
 		}
 	})
 
 	-- TAILWINDCSS
 	local tailwind_helper = require("yeyee-mbpro-m2.ide.frontend.tailwindcss")
 	lspconfig.tailwindcss.setup({
-		capabilities = capabilities,
+		capabilities = tailwind_helper.get_capabilities(),
 		on_attach = tailwind_helper.update_on_attach(on_attach),
 		settings = tailwind_helper.get_settings(),
 	})
