@@ -117,4 +117,13 @@ require("packer").startup(function(use)
 			"nvim-telescope/telescope.nvim"
 		}
 	})
+
+	-- Database
+	use ({
+		"kristijanhusak/vim-dadbod-ui",
+		requires = {
+			"tpope/vim-dadbod",
+			"kristijanhusak/vim-dadbod-completion",
+		},
+	})
 end)
