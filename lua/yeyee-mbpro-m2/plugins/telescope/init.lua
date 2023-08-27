@@ -3,11 +3,19 @@ if not pcall(require, "telescope") then
 end
 
 local telescope = require("telescope")
+local actions = require("telescope.actions")
 local preview_size = 50 -- in percent
 local transparency = 0 -- in percent
 
 telescope.setup({
 	defaults = {
+		mappings = {
+			n = {
+				-- NOTE: untuk mengatasi mapping tombol Alt / Control di macbook yang complicated
+				["q"] = actions.send_to_qflist + actions.open_qflist,
+				["Q"] = actions.send_selected_to_qflist + actions.open_qflist,
+			}
+		},
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",

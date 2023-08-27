@@ -1,3 +1,11 @@
+vim.filetype.add({
+	extension = {
+		mdx = "markdown.mdx",
+	},
+	filename = {},
+	pattern = {},
+})
+
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
         "go",

@@ -15,6 +15,9 @@ VISUAL_MODE_MAPPING = {
 
 	-- PASTE, but do not replace yank register
 	{ ["<Leader>p"] = '"_dP'},
+
+	-- EXPLAIN THIS SHITTY CODE
+	{ ["<Leader>cge"] = "<cmd>ChatGPTRun explain_code<CR>" },
 }
 
 INSERT_MODE_MAPPING = {
@@ -57,26 +60,6 @@ NORMAL_MODE_MAPPING = {
 	{ ["sh"] = "<C-w>s" },
 	{ ["sv"] = "<C-w>v" },
 	{ ["sq"] = "<C-w>q" },
-
-	-- PLUGIN: barbar.nvim
-	{ ["<Tab>l"] = "<cmd>BufferNext<CR>" },
-	{ ["<Tab>h"] = "<cmd>BufferPrevious<CR>" },
-	{ ["<Tab>1"] = "<cmd>BufferGoto 1<CR>" },
-	{ ["<Tab>2"] = "<cmd>BufferGoto 2<CR>" },
-	{ ["<Tab>3"] = "<cmd>BufferGoto 3<CR>" },
-	{ ["<Tab>4"] = "<cmd>BufferGoto 4<CR>" },
-	{ ["<Tab>5"] = "<cmd>BufferGoto 5<CR>" },
-	{ ["<Tab>6"] = "<cmd>BufferGoto 6<CR>" },
-	{ ["<Tab>7"] = "<cmd>BufferGoto 7<CR>" },
-	{ ["<Tab>8"] = "<cmd>BufferGoto 8<CR>" },
-	{ ["<Tab>9"] = "<cmd>BufferGoto 9<CR>" },
-	{ ["<Tab>0"] = "<cmd>BufferLast<CR>" },
-	{ ["<Tab>p"] = "<cmd>BufferPin<CR>" },
-	{ ["<Tab><Tab>"] = "<cmd>BufferPick<CR>" },
-	{ ["<Tab>H"] = "<cmd>BufferMovePrevious<CR>" },
-	{ ["<Tab>L"] = "<cmd>BufferMoveNext<CR>" },
-	{ ["<Tab>q"] = "<cmd>BufferClose<CR>" },
-	{ ["<Tab>Q"] = "<cmd>BufferCloseAllButPinned<CR>" },
 
 	-- PLUGIN: Nvim-tree
 	{ ["<Leader>n"] = "<cmd>NvimTreeToggle<CR>" },
@@ -149,6 +132,11 @@ NORMAL_MODE_MAPPING = {
 	--	{
 	--		["<Leader>dq"] = '<cmd>lua require("dap").disconnect({ restart = false, terminateDebuggee = true }, function() require("dap").close() end)<CR>',
 	--	},
+
+
+	-- PLUGIN: chat GPT
+	{ ["<Leader>cgg"] = "<cmd>ChatGPT<CR>" },
+	{ ["<Leader>cga"] = "<cmd>ChatGPTActAs<CR>" },
 }
 
 ---------------------------------------------

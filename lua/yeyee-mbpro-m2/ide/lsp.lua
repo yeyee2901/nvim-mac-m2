@@ -11,9 +11,7 @@ vim.fn.sign_define(
 )
 
 vim.fn.sign_define("DiagnosticSignWarn", { text = "⁉", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
-
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
-
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -125,8 +123,7 @@ lspconfig.gopls.setup({
 
 -- rustup component add rust-analyzer
 -- rustup component add clippy
-local rt = require("rust-tools")
-rt.setup({
+require("rust-tools").setup({
 	server = {
 		cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' } ,
 		on_attach = custom_on_attach,
