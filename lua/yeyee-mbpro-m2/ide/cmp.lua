@@ -36,9 +36,9 @@ cmp.setup({
 	},
 
 	sources = cmp.config.sources({
-		{ name = 'vim-dadbod-completion' },
 		{ name = 'nvim_lsp' },
 		{ name = 'ultisnips' }, -- For ultisnips users.
+		{ name = 'vim-dadbod-completion' }, -- database completion on dbui-mode
 		{ name = "nvim_lua" },
 		{ name = 'path' },
 	}),

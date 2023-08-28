@@ -126,4 +126,7 @@ require("packer").startup(function(use)
 			"kristijanhusak/vim-dadbod-completion",
 		},
 	})
+
+	-- JAVA
+	use ({'mfussenegger/nvim-jdtls'})
 end)

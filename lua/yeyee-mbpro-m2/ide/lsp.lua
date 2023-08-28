@@ -1,3 +1,5 @@
+local M = {}
+
 -- SECTION: GLOBAL VARS
 MY_HOME = os.getenv("HOME")
 
@@ -40,11 +42,11 @@ saga.setup({
 	code_action_lightbulb = {
 		enable = false,
 		enable_in_insert = false,
-		cache_code_action = true,
-		sign = true,
+		cache_code_action = false,
+		sign = false,
 		update_time = 300,
 		sign_priority = 20,
-		virtual_text = true,
+		virtual_text = false,
 	},
 	finder_action_keys = {
 		open = "o",
@@ -150,3 +152,8 @@ lspconfig.pyright.setup({
 
 -- FRONT END STUFFS
 require("yeyee-mbpro-m2.ide.frontend").init_frontend(custom_on_attach, capabilities_updated)
+
+-- JAVA STUFFS
+require("yeyee-mbpro-m2.ide.java").init(custom_on_attach, capabilities_updated)
+
+return M
